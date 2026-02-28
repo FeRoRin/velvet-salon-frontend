@@ -1,0 +1,21 @@
+/* Import Tailwind's three layers */
+/* base = resets, components = reusable classes, utilities = all the helpers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Google Fonts — loaded from CDN */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap');
+
+
+/* Smooth scrolling when clicking anchor links like href='#services' */
+html { scroll-behavior: smooth; }
+ 
+/* Remove default browser margin */
+body { margin: 0; font-family: 'Inter', sans-serif; }
+ 
+/* Custom scrollbar — pink accent */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f9fafb; }
+::-webkit-scrollbar-thumb { background: #be185d; border-radius: 3px; }
