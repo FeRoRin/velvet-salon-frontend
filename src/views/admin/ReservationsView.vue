@@ -97,9 +97,9 @@
                 <div class='font-medium text-white text-sm'>{{ res.user?.name }}</div>
                 <div class='text-gray-500 text-xs mt-0.5'>{{ res.user?.phone }}</div>
               </td>
-              <td class='px-5 py-4 text-gray-300 text-sm'>{{ res.service?.title }}</td>
+              <td class='px-5 py-4 text-gray-300 text-sm'>{{ res.service?.name || res.service?.title }}</td>
               <td class='px-5 py-4'>
-                <div class='text-white text-sm'>{{ res.reservation_date }}</div>
+                <div class='text-white text-sm'>{{ formatDate(res.reservation_date) }} </div>
                 <div class='text-gray-500 text-xs'>{{ res.start_time }} – {{ res.end_time }}</div>
               </td>
               <td class='px-5 py-4'>
@@ -177,7 +177,7 @@
             >
               <option value=''>Select service...</option>
               <option v-for='s in services' :key='s.id' :value='s.id'>
-                {{ s.title }} — ${{ s.price }}
+                {{ s.name || s.title }} — ${{ s.price }}
               </option>
             </select>
           </div>
@@ -230,7 +230,9 @@ import AdminLayout  from '../../components/layout/AdminLayout.vue'
 import StatusBadge  from '../../components/ui/StatusBadge.vue'
 //import { adminAPI, fakeServices } from '../../services/api'
 import { adminAPI, fakeServices, servicesAPI } from '../../services/api'
- 
+ import { useFormatDate } from '../../composables/useFormatDate'
+
+const { formatDate } = useFormatDate()
 const reservations     = ref([])
 const loading          = ref(true)
 const total            = ref(0)

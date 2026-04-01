@@ -8,10 +8,12 @@
  
         <!-- ── LOGO ──────────────────────────────────── -->
         <RouterLink to='/' class='flex items-center gap-2 group'>
-          <span class='text-2xl group-hover:scale-110 transition-transform'>🌸</span>
+          <!--span class='text-2xl group-hover:scale-110 transition-transform'>🌸</span>
           <span class='text-xl font-serif font-bold text-pink-700'>
             Velvet Salon
-          </span>
+          </span--->
+          <img src='../../assets/logo.png' alt='Velvet Salon' class='h-10 w-auto object-contain' />
+
         </RouterLink>
  
         <!-- ── CENTER LINKS (hidden on mobile) ──────── -->
@@ -52,7 +54,7 @@
             <RouterLink to='/login'
               class='text-gray-600 hover:text-pink-700 font-medium text-sm transition-colors'
             >Login</RouterLink>
-            <RouterLink to='/register'
+            <RouterLink to='/booking'
               class='bg-pink-700 text-white px-4 py-2 rounded-full text-sm font-medium
                      hover:bg-pink-800 transition-all shadow-sm hover:shadow-md'
             >Book Now</RouterLink>

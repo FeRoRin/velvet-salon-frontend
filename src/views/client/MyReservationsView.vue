@@ -63,11 +63,11 @@
           <div class='flex items-start justify-between gap-4'>
             <div class='flex-1'>
               <div class='flex items-center gap-3 mb-2'>
-                <h3 class='font-semibold text-gray-900'>{{ res.service?.title }}</h3>
+                <h3 class='font-semibold text-gray-900'>{{ res.service?.name || res.service?.title }}</h3>
                 <StatusBadge :status='res.status' />
               </div>
               <div class='text-sm text-gray-500 space-y-1'>
-                <div>📅 {{ res.reservation_date }}  🕐 {{ res.start_time }} – {{ res.end_time }}</div>
+                <div>📅 {{ formatDate(res.reservation_date) }}  🕐 {{ res.start_time }} – {{ res.end_time }}</div>
                 <div v-if='res.notes' class='italic text-xs'>📝 {{ res.notes }}</div>
               </div>
             </div>
@@ -108,6 +108,9 @@ import { RouterLink }     from 'vue-router'
 import { useAuthStore }   from '../../stores/auth'
 import { reservationsAPI } from '../../services/api'
 import StatusBadge from '../../components/ui/StatusBadge.vue'
+import { useFormatDate } from '../../composables/useFormatDate'
+
+const { formatDate } = useFormatDate()
  
 const reservations = ref([])
 const loading      = ref(true)

@@ -26,7 +26,7 @@
               class='hover:bg-gray-800/50 transition-colors'
           >
             <td class='px-5 py-4'>
-              <div class='font-medium text-white text-sm'>{{ service.title }}</div>
+              <div class='font-medium text-white text-sm'>{{ service.name || service.title }}</div>
               <div class='text-gray-500 text-xs mt-0.5 max-w-xs truncate'>
                 {{ service.description }}
               </div>
@@ -77,7 +77,7 @@
         <form @submit.prevent='saveService' class='space-y-4'>
           <div>
             <label class='block text-gray-300 text-sm mb-1'>Service Name *</label>
-            <input v-model='form.title' required
+            <input v-model='form.name' required
               class='w-full bg-gray-800 border border-gray-700 text-white rounded-xl
                      px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500'
             />
@@ -202,7 +202,7 @@ async function toggleActive(service) {
 }
  
 async function deleteService(service) {
-  if (!confirm(`Delete "${service.title}"? This cannot be undone.`)) return
+  if (!confirm(`Delete "${service.name || service.title}"? This cannot be undone.`)) return
   try {
     await superAdminAPI.deleteService(service.id)
     services.value = services.value.filter(s => s.id !== service.id)

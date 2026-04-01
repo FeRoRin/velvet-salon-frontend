@@ -147,7 +147,7 @@ onMounted(async () => {
     barChart = new Chart(barCanvas.value, {
       type: 'bar',
       data: {
-        labels:   topServices.map(s => s.title),
+        labels:   topServices.map(s => s.name || s.title),
         datasets: [{
           label:           'Bookings',
           data:            topServices.map(s => s.total),

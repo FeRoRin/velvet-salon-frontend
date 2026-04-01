@@ -80,7 +80,7 @@ async function handleLogin() {
   error.value   = ''
   try {
     const res = await authAPI.login(form.value)
-    auth.setUser(res.data.data.user, res.data.data.token)
+    const p = res.data.data ?? res.data; auth.setUser(p.user, p.token)
  
     // Only allow admin and super_admin into admin panel
     if (!auth.isAdmin) {

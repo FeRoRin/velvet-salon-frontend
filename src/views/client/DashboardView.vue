@@ -58,9 +58,9 @@
                       rounded-xl hover:bg-pink-100 transition-colors'
           >
             <div>
-              <p class='font-medium text-gray-900 text-sm'>{{ res.service?.title }}</p>
+              <p class='font-medium text-gray-900 text-sm'>{{ res.service?.name || res.service?.title }}</p>
               <p class='text-gray-400 text-xs mt-0.5'>
-                📅 {{ res.reservation_date }}  🕐 {{ res.start_time }}
+                📅 {{ formatDate(res.reservation_date) }}  🕐 {{ res.start_time }}
               </p>
             </div>
             <div class='flex items-center gap-3'>
@@ -86,6 +86,9 @@ import { RouterLink }   from 'vue-router'
 import { useAuthStore } from '../../stores/auth'
 import { reservationsAPI } from '../../services/api'
 import StatusBadge from '../../components/ui/StatusBadge.vue'
+import { useFormatDate } from '../../composables/useFormatDate'
+
+const { formatDate } = useFormatDate()
  
 const auth         = useAuthStore()
 const reservations = ref([])

@@ -121,7 +121,7 @@ async function handleRegister() {
  
   try {
     const res = await authAPI.register(form.value)
-    auth.setUser(res.data.data.user, res.data.data.token)
+    const p = res.data.data ?? res.data; auth.setUser(p.user, p.token)
     router.push('/dashboard')
  
   } catch (err) {
