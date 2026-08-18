@@ -72,14 +72,14 @@
           </div>
           <div>
             <label class='block text-sm text-gray-600 mb-1'>New Password</label>
-            <input v-model='pwForm.new_password' type='password' required
+            <input v-model='pwForm.password' type='password' required
               placeholder='Minimum 8 characters'
               class='w-full border border-gray-200 rounded-xl px-4 py-3 text-sm
                      focus:outline-none focus:ring-2 focus:ring-pink-400'/>
           </div>
           <div>
             <label class='block text-sm text-gray-600 mb-1'>Confirm New Password</label>
-            <input v-model='pwForm.new_password_confirmation' type='password' required
+            <input v-model='pwForm.password_confirmation' type='password' required
               placeholder='Repeat new password'
               class='w-full border border-gray-200 rounded-xl px-4 py-3 text-sm
                      focus:outline-none focus:ring-2 focus:ring-pink-400'/>
@@ -113,7 +113,7 @@ const auth   = useAuthStore()
 const router = useRouter()
 
 // Change password
-const pwForm    = ref({ current_password:'', new_password:'', new_password_confirmation:'' })
+const pwForm    = ref({ current_password:'', password:'', password_confirmation:'' })
 const pwLoading = ref(false)
 const pwError   = ref('')
 const pwSuccess = ref(false)
@@ -121,7 +121,7 @@ const pwSuccess = ref(false)
 async function handleChangePassword() {
   pwError.value   = ''
   pwSuccess.value = false
-  if (pwForm.value.new_password !== pwForm.value.new_password_confirmation) {
+  if (pwForm.value.password !== pwForm.value.password_confirmation) {
     pwError.value = 'New passwords do not match.'
     return
   }
@@ -129,7 +129,7 @@ async function handleChangePassword() {
   try {
     await authAPI.changePassword(pwForm.value)
     pwSuccess.value = true
-    pwForm.value = { current_password:'', new_password:'', new_password_confirmation:'' }
+    pwForm.value = { current_password:'', password:'', password_confirmation:'' }
     setTimeout(() => pwSuccess.value = false, 3000)
   } catch (err) {
     pwError.value = err.response?.data?.message || 'Failed to change password.'
