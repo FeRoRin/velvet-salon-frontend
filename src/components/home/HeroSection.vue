@@ -1,70 +1,73 @@
 <template>
-  <!-- min-h-screen = full viewport height -->
-  <!-- bg-gradient-to-br = diagonal gradient bottom-right -->
-  <section class='relative min-h-screen flex items-center justify-center
-                  bg-gradient-to-br from-pink-50 via-white to-rose-50 overflow-hidden'>
- 
-    <!-- Decorative background blobs (visual polish) -->
-    <div class='absolute -top-32 -left-32 w-96 h-96 bg-pink-200 rounded-full
-                opacity-30 blur-3xl pointer-events-none'></div>
-    <div class='absolute -bottom-32 -right-32 w-96 h-96 bg-rose-200 rounded-full
-                opacity-30 blur-3xl pointer-events-none'></div>
- 
-    <!-- Main hero content -->
-    <div class='relative z-10 text-center max-w-5xl mx-auto px-4 py-20'>
- 
-      <!-- Eyebrow label above title -->
-      <div class='inline-flex items-center gap-2 bg-pink-100 text-pink-700
-                  text-sm font-medium px-4 py-2 rounded-full mb-8'>
-        <span>✨</span>
-        <span>Premium Hair & Beauty Services</span>
-      </div>
- 
-      <!-- Main heading — font-serif uses Playfair Display -->
-      <h1 class='text-5xl md:text-6xl lg:text-7xl font-serif font-bold
-                 text-gray-900 mb-6 leading-tight'>
-        Where Beauty
-        <span class='text-pink-700 italic'> Meets</span><br>
-        <span class='text-gray-900'>Elegance</span>
-      </h1>
- 
-      <p class='text-lg md:text-xl text-gray-500 mb-12 max-w-2xl mx-auto leading-relaxed'>
-        Experience the art of hair care at Velvet Salon. From classic cuts
-        to stunning transformations — we make you feel your most beautiful.
-      </p>
- 
-      <!-- CTA buttons -->
-      <div class='flex flex-col sm:flex-row gap-4 justify-center mb-20'>
-        <RouterLink to='/booking'
-          class='bg-pink-700 text-white px-8 py-4 rounded-full text-lg font-semibold
-                 hover:bg-pink-800 shadow-lg shadow-pink-200 hover:shadow-pink-300
-                 hover:scale-105 transition-all duration-200'
-        >Book Appointment ✨</RouterLink>
-        <a href='#services'
-          class='border-2 border-pink-200 text-pink-700 px-8 py-4 rounded-full text-lg
-                 font-semibold hover:bg-pink-50 hover:border-pink-400 transition-all'
-        >Explore Services</a>
-      </div>
- 
-      <!-- Stats row -->
-      <!-- flex-wrap = wraps on small screens -->
-      <div class='flex flex-wrap justify-center gap-12 border-t border-pink-100 pt-10'>
-        <div v-for='stat in stats' :key='stat.label' class='text-center'>
-          <div class='text-3xl font-bold text-pink-700'>{{ stat.value }}</div>
-          <div class='text-gray-400 text-sm mt-1'>{{ stat.label }}</div>
+  <section class="bg-stone-50 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 min-h-[85vh] items-center">
+        
+        <!-- Text -->
+        <div class="px-6 sm:px-8 lg:px-12 py-16 lg:py-0 order-2 lg:order-1">
+          <p class="text-xs font-medium tracking-[0.2em] uppercase text-stone-500 mb-6">
+            Velvet Salon — Est. 2016
+          </p>
+          
+          <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl text-stone-900 leading-[0.95] mb-8">
+            The Art of<br>
+            <span class="italic text-velvet-800">Beautiful</span> Hair.
+          </h1>
+          
+          <p class="text-stone-600 text-lg leading-relaxed max-w-md mb-10">
+            Personalized cuts, color and treatments in a calm, elegant salon experience. 
+            Where your vision meets our craft.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row items-start gap-4 mb-16">
+            <RouterLink to="/booking"
+              class="inline-flex items-center gap-3 bg-stone-900 text-white px-8 py-4 text-sm font-medium tracking-wide hover:bg-stone-800 transition-colors"
+            >
+              Book an Appointment
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
+              </svg>
+            </RouterLink>
+            <RouterLink to="/services"
+              class="inline-flex items-center gap-2 text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors border-b border-stone-300 hover:border-stone-900 pb-1"
+            >
+              Explore Services
+            </RouterLink>
+          </div>
+          
+          <div class="flex items-center gap-8 text-sm text-stone-500">
+            <div class="flex flex-col">
+              <span class="font-serif text-2xl text-stone-900">500+</span>
+              <span class="text-xs tracking-wide uppercase mt-1">Clients</span>
+            </div>
+            <div class="w-px h-8 bg-stone-300"></div>
+            <div class="flex flex-col">
+              <span class="font-serif text-2xl text-stone-900">4.9</span>
+              <span class="text-xs tracking-wide uppercase mt-1">Rating</span>
+            </div>
+            <div class="w-px h-8 bg-stone-300"></div>
+            <div class="flex flex-col">
+              <span class="font-serif text-2xl text-stone-900">8+</span>
+              <span class="text-xs tracking-wide uppercase mt-1">Years</span>
+            </div>
+          </div>
         </div>
+        
+        <!-- Image -->
+        <div class="relative h-[50vh] lg:h-[85vh] order-1 lg:order-2">
+          <img 
+            src="/images/pexels-hairlust-official-2158267570-35267458.jpg" 
+            alt="Luxury hair styling at Velvet Salon"
+            class="absolute inset-0 w-full h-full object-cover"
+          >
+          <div class="absolute inset-0 bg-gradient-to-r from-stone-50/20 to-transparent lg:hidden"></div>
+        </div>
+        
       </div>
- 
     </div>
   </section>
 </template>
- 
+
 <script setup>
 import { RouterLink } from 'vue-router'
-const stats = [
-  { value:'500+', label:'Happy Clients'    },
-  { value:'8+',   label:'Years Experience' },
-  { value:'15+',  label:'Expert Stylists'  },
-  { value:'4.9★', label:'Average Rating'   },
-]
 </script>

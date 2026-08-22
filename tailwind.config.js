@@ -10,7 +10,7 @@ export default {
     extend: {
       colors: {
         // Custom Velvet Salon pink palette (velvet + admin)
-        velvet: {
+        /*velvet: {
           50:  '#fdf2f8',
           100: '#fce7f3',
           200: '#fbcfe8',
@@ -21,7 +21,33 @@ export default {
           700: '#be185d',   // ← main brand color 
           800: '#9d174d',
           900: '#831843',
-        },
+        },*/
+
+        velvet: {
+        50:  '#fdf2f8',
+        100: '#fce7f3',
+        200: '#fbcfe8',
+        300: '#f9a8d4',
+        400: '#f472b6',
+        500: '#ec4899',
+        600: '#db2777',
+        700: '#be185d', // main brand color
+        800: '#9d174d',
+        900: '#831843',
+      },
+      
+      chocolate: {
+        50:  '#F8F4F2',
+        100: '#EDE3DE',
+        200: '#DCCBC3',
+        500: '#6B4A3E',
+        600: '#54382F',
+        700: '#3B2925',
+        800: '#2F211E',
+        900: '#241815',
+      },
+      
+
         // Admin purple palette
         admin: {
           50:  '#f5f3ff',

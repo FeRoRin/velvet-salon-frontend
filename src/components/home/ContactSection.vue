@@ -21,7 +21,7 @@
         <RouterLink to='/booking'
           class='bg-white text-pink-700 px-8 py-3 rounded-full font-semibold
                  hover:bg-pink-50 transition-colors inline-block'
-        >Book Now ✨</RouterLink>
+        >Book Your Appointment →</RouterLink>
       </div>
     </div>
   </section>
