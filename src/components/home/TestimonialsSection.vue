@@ -18,7 +18,15 @@
       </div>
 
       <!-- Testimonial -->
-      <div class="min-h-[280px] flex items-center justify-center">
+      <div
+        class="min-h-[280px] flex items-center justify-center select-none cursor-grab active:cursor-grabbing"
+        style="touch-action: pan-y;"
+        @pointerdown="onPointerDown"
+        @pointermove="onPointerMove"
+        @pointerup="onPointerUp"
+        @pointercancel="onPointerUp"
+        @pointerleave="onPointerUp"
+      >
         <Transition name="fade" mode="out-in">
           <div
             :key="active"
@@ -76,6 +84,35 @@
 import { ref } from 'vue'
 
 const active = ref(0)
+
+function next() {
+  active.value = (active.value + 1) % testimonials.length
+}
+function prev() {
+  active.value = (active.value - 1 + testimonials.length) % testimonials.length
+}
+
+// Desktop mouse-drag + mobile touch-swipe, unified via the Pointer Events API
+let dragging = false
+let startX = 0
+const DRAG_THRESHOLD = 40 // px before a drag counts as a swipe
+
+function onPointerDown(e) {
+  dragging = true
+  startX = e.clientX
+}
+function onPointerMove(e) {
+  if (!dragging) return
+  // prevent the browser from treating this as a text/image drag
+  e.preventDefault()
+}
+function onPointerUp(e) {
+  if (!dragging) return
+  dragging = false
+  const delta = e.clientX - startX
+  if (delta <= -DRAG_THRESHOLD) next()
+  else if (delta >= DRAG_THRESHOLD) prev()
+}
 
 const testimonials = [
   {

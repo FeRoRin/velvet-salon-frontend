@@ -1,28 +1,32 @@
 <template>
-  <div class='bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-xl
-              hover:border-pink-200 transition-all duration-300 hover:-translate-y-1 group'>
+  <div class='group bg-white border border-stone-200 hover:border-stone-900
+              transition-colors duration-300 p-8 flex flex-col h-full relative'>
 
-    <div class='flex items-start justify-between mb-4'>
-      <div class='w-12 h-12 bg-pink-50 rounded-xl flex items-center justify-center
-                  group-hover:bg-pink-100 transition-colors text-2xl'>
-        {{ icon }}
-      </div>
-      <span class='text-xs text-gray-400 bg-gray-50 px-2.5 py-1 rounded-full'>
-        ⏱ {{ service.duration }}min
+    <div class='flex items-start justify-between mb-8'>
+      <span class='text-xs font-medium tracking-[0.15em] uppercase text-stone-400'>
+        {{ service.duration }} Min
+      </span>
+      <span v-if='service.is_active === false'
+        class='text-xs font-medium tracking-[0.15em] uppercase text-stone-400 border border-stone-200 px-2 py-0.5'>
+        Unavailable
       </span>
     </div>
 
-    <h3 class='text-base font-semibold text-gray-900 mb-2'>{{ displayName }}</h3>
-    <p class='text-gray-500 text-sm leading-relaxed mb-5 line-clamp-2'>
+    <h3 class='font-serif text-2xl text-stone-900 mb-3 leading-snug'>{{ displayName }}</h3>
+    <p class='text-stone-600 text-sm leading-relaxed mb-8 line-clamp-3 flex-1'>
       {{ service.description }}
     </p>
 
-    <div class='flex items-center justify-between'>
-      <span class='text-2xl font-bold text-pink-700'>${{ service.price }}</span>
+    <div class='flex items-center justify-between pt-6 border-t border-stone-100'>
+      <span class='font-serif text-2xl text-stone-900'>${{ service.price }}</span>
       <RouterLink :to='bookingLink'
-        class='bg-pink-50 text-pink-700 px-4 py-2 rounded-xl text-sm font-medium
-               group-hover:bg-pink-700 group-hover:text-white transition-all'>
-        Book →
+        class='inline-flex items-center gap-2 text-sm font-medium text-stone-900
+               border-b border-stone-900 pb-0.5
+               group-hover:text-velvet-800 group-hover:border-velvet-800 transition-colors'>
+        Book
+        <svg class='w-4 h-4' fill='none' stroke='currentColor' stroke-width='1.5' viewBox='0 0 24 24'>
+          <path stroke-linecap='round' stroke-linejoin='round' d='M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3'/>
+        </svg>
       </RouterLink>
     </div>
   </div>
@@ -41,17 +45,4 @@ const displayName = computed(() => props.service.name || props.service.title || 
 
 // Pre-select this service in the booking page
 const bookingLink = computed(() => `/booking?service=${props.service.id}`)
-
-const icon = computed(() => {
-  const t = displayName.value.toLowerCase()
-  if (t.includes('cut') || t.includes('kids'))          return '✂️'
-  if (t.includes('color'))                               return '🎨'
-  if (t.includes('keratin'))                             return '✨'
-  if (t.includes('highlight') || t.includes('balayage')) return '🌟'
-  if (t.includes('bridal'))                              return '👰'
-  if (t.includes('condition') || t.includes('deep'))     return '💧'
-  if (t.includes('scalp'))                               return '💆'
-  if (t.includes('blow') || t.includes('style'))         return '💨'
-  return '💇'
-})
 </script>

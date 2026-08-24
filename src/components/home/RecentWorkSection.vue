@@ -44,18 +44,17 @@
              LARGE IMAGE
              col-span-2 + row-span-2 makes this image bigger.
              =================================================== -->
-        <div
-          class="col-span-2 row-span-2 overflow-hidden group relative cursor-pointer"
-          @click="openImage({
-            image: '/images/pexels-ionela-mat-268382825-20894394.jpg',
-            title: 'Balayage Highlights',
-            description: 'Beautiful dimension and natural-looking color.'
-          })"
-        >
+             <div
+             class="col-span-2 row-span-2 overflow-hidden group relative cursor-pointer"
+              @click="openImage({ image: '/images/pexels-ionela-mat-268382825-20894394.webp', title: 'Balayage Highlights', description: 'Beautiful dimension and natural-looking color.' })"
+              >
           <!-- Image -->
           <img
-            src="/images/pexels-ionela-mat-268382825-20894394.jpg"
+            src="/images/pexels-ionela-mat-268382825-20894394.webp"
             alt="Balayage highlights and hair coloring"
+            decoding="sync"
+            fetchpriority="high"
+              
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           >
 
@@ -93,14 +92,15 @@
         <div
           class="overflow-hidden group relative cursor-pointer"
           @click="openImage({
-            image: '/images/pexels-oleksandra-23349908.jpg',
+            image: '/images/pexels-oleksandra-23349908.webp',
             title: 'Deep Conditioning',
             description: 'Nourishing care for healthy and hydrated hair.'
           })"
         >
           <img
-            src="/images/pexels-oleksandra-23349908.jpg"
+            src="/images/pexels-oleksandra-23349908.webp"
             alt="Hair treatment"
+            decoding="sync"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           >
 
@@ -129,14 +129,16 @@
         <div
           class="overflow-hidden group relative cursor-pointer"
           @click="openImage({
-            image: '/images/pexels-alinaskazka-15507420.jpg',
+            image: '/images/pexels-alinaskazka-15507420.webp',
             title: 'Bridal Styling',
             description: 'Elegant styling for your special day.'
           })"
         >
           <img
-            src="/images/pexels-alinaskazka-15507420.jpg"
+            src="/images/pexels-alinaskazka-15507420.webp"
             alt="Bridal hair styling"
+            
+            decoding="sync"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           >
 
@@ -165,14 +167,16 @@
         <div
           class="overflow-hidden group relative cursor-pointer"
           @click="openImage({
-            image: '/images/pexels-enginakyurt-3065171.jpg',
+            image: '/images/pexels-enginakyurt-3065171.webp',
             title: 'Styled Waves',
             description: 'Soft, elegant waves for a beautiful finish.'
           })"
         >
           <img
-            src="/images/pexels-enginakyurt-3065171.jpg"
+            src="/images/pexels-enginakyurt-3065171.webp"
             alt="Styled waves"
+            
+            decoding="sync"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           >
 
@@ -201,14 +205,16 @@
         <div
           class="overflow-hidden group relative cursor-pointer"
           @click="openImage({
-            image: '/images/pexels-element5-973401.jpg',
+            image: '/images/pexels-element5-973401.webp',
             title: 'Silky Hair Finish',
             description: 'Smooth, healthy-looking hair with a natural shine.'
           })"
         >
           <img
-            src="/images/pexels-element5-973401.jpg"
+            src="/images/pexels-element5-973401.webp"
             alt="Silky smooth hair"
+            
+            decoding="sync"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           >
 
@@ -382,5 +388,16 @@ const viewAllWork = () => {
 .lightbox-enter-from,
 .lightbox-leave-to {
   opacity: 0;
+}
+
+/**********/
+img {
+ 
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 </style>
